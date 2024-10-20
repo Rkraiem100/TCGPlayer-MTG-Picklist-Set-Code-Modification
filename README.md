@@ -5,7 +5,7 @@ TO USE THE PROGRAM:
 2- Download a picklist from your TCGPlayer sale
 3- Drag the CSV file over the executable. 
 4- It will create a new XLSX file called Modified Pullsheet with the changes
-5- It (should) differentiate between different card games so it will only make these changes for Magic. So if you have sales for Yugioh or Pokemon it wont change those
+5- It (should) differentiate between different card games so it will only make these changes for Magic The Gathering. So if you have sales for Yugioh or Pokemon it wont change those
 6- The sets it recognizes is based on the INI file it generates. You can add to the INI file to add sets for it to modify. The code by default only checks 1 set. I'll likely update the project in the future to add more sets to the default INI but in the mean time you can add them yourself.
 
 Takes the default TCGPlayer CSV picklist file and checks the set name against an internal INI to add a column with the set codes. This can help with inventory for medium to large sellers if you want to organize sets by the set code (where available) and easily match set codes on pick lists so you don't need to memorize set icons.
