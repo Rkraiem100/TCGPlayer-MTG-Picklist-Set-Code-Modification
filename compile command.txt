@@ -1,0 +1,2 @@
+Click View, Terminal in VS Code. Run the following command:
+python -m PyInstaller --onefile tcgplayer_picklist_mod.py --exclude-module torch --exclude-module tensorflow --exclude-module transformers --exclude-module scipy --exclude-module nltk
