@@ -5,10 +5,24 @@ import sys
 import time
 
 def create_default_ini(ini_path):
-    # Creating default INI file with an example mapping
+    # Creating default INI file with the provided mappings
     config = configparser.ConfigParser()
     config['SetNames'] = {
-        'Magic Origins': 'ORI'
+        'Magic Origins': 'ORI',
+        'Wilds of Eldraine': 'WOE',
+        'Ravnica Remastered': 'RVR',
+        'Modern Horizons 2': 'MH2',
+        'Theros Beyond Death': 'THB',
+        'Commander Legends Battle for Baldur\'s Gate': 'CLB',
+        'Strixhaven: School of Mages': 'STX',
+        'Ikoria: Lair of Behemoths': 'IKO',
+        'Core Set 2021': 'M21',
+        'Outlaws of Thunder Junction': 'OTJ',
+        'Zendikar Rising': 'ZNR',
+        'Kaldheim': 'KHM',
+        'Zendikar': 'No set acronym',
+        'The Brothers\' War: Retro Frame Artifacts': 'No set acronym',
+        'Commander Legends': 'CMR'
     }
     with open(ini_path, 'w') as configfile:
         config.write(configfile)
@@ -31,9 +45,14 @@ def modify_data(df, set_mappings):
     # Iterate over each row starting from the first data row (ignoring the header)
     for index, row in df.iterrows():
         if str(row['Product Line']).strip().lower() == 'magic':
-            set_name = str(row['Set']).strip().lower()
-            # Lookup the set name in the dictionary
-            set_code = set_mappings.get(set_name, 'null')
+            product_name = str(row['Product Name']).strip().lower()
+            if '(retro frame)' in product_name:
+                # If the product name contains "(Retro Frame)", set the code to "Retro Frame"
+                set_code = 'Retro Frame'
+            else:
+                # Otherwise, use the default set code logic
+                set_name = str(row['Set']).strip().lower()
+                set_code = set_mappings.get(set_name, 'null')
             # Update the "Set Code" column
             df.at[index, 'Set Code'] = set_code
     return df
